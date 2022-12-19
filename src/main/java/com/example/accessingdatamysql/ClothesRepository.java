@@ -1,0 +1,16 @@
+package com.example.accessingdatamysql;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.accessingdatamysql.clothes;
+
+import java.util.List;
+// This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
+// CRUD refers Create, Read, Update, Delete
+
+public interface ClothesRepository extends CrudRepository<clothes, Integer> {
+
+    @Query(value = "SELECT C FROM clothes C WHERE id = ?1")
+    List<clothes> findItem(Integer id);
+}
